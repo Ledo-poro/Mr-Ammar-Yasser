@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="reports-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام التقارير | Mr Ammar Yasser</title>
+</head>
+<body>
+    <Header>
+        <h2>Mr Ammar Yasser</h2>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="../index.html">الصفحة الرئيسية</a></li>
+                <li><a href="../Teacher/index.html">المدرسين</a></li>
+                <li><a href="#reports">التقارير</a></li>
+            </ul>
+        </nav>
+    </Header>
+
+    <main class="reports-page">
+        <!-- قسم إضافة طالب جديد -->
+        <section class="add-student-section">
+            <div class="container">
+                <h2>إضافة طالب جديد</h2>
+                <form class="student-form" id="addStudentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentName">اسم الطالب *</label>
+                            <input type="text" id="studentName" name="studentName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentGrade">المرحلة الدراسية *</label>
+                            <select id="studentGrade" name="studentGrade" required>
+                                <option value="">اختر المرحلة</option>
+                                <option value="prep1">الأول الإعدادي</option>
+                                <option value="prep2">الثاني الإعدادي</option>
+                                <option value="prep3">الثالث الإعدادي</option>
+                                <option value="sec1">الأول الثانوي</option>
+                                <option value="sec2">الثاني الثانوي</option>
+                                <option value="sec3">الثالث الثانوي</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="studentParent">ولي الأمر</label>
+                            <input type="text" id="studentParent" name="studentParent">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">إضافة الطالب</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- قسم إدارة الحضور والغياب -->
+        <section class="attendance-section">
+            <div class="container">
+                <h2>إدارة الحضور والغياب للصف الاول الاعدادي</h2>
+                
+                <!-- اختيار الشهر والمرحلة -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="monthSelect">الشهر:</label>
+                        <select id="monthSelect">
+                            <option value="1">يناير</option>
+                            <option value="2">فبراير</option>
+                            <option value="3">مارس</option>
+                            <option value="4">أبريل</option>
+                            <option value="5">مايو</option>
+                            <option value="6">يونيو</option>
+                            <option value="7">يوليو</option>
+                            <option value="8">أغسطس</option>
+                            <option value="9">سبتمبر</option>
+                            <option value="10">أكتوبر</option>
+                            <option value="11">نوفمبر</option>
+                            <option value="12">ديسمبر</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="gradeSelect">المرحلة:</label>
+                        <select id="gradeSelect">
+                            <option value="">جميع المراحل</option>
+                            <option value="prep1">الأول الإعدادي</option>
+                            <option value="prep2">الثاني الإعدادي</option>
+                            <option value="prep3">الثالث الإعدادي</option>
+                            <option value="sec1">الأول الثانوي</option>
+                            <option value="sec2">الثاني الثانوي</option>
+                            <option value="sec3">الثالث الثانوي</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline" onclick="loadStudents()">عرض الطلاب</button>
+                </div>
+
+                <!-- جدول الطلاب -->
+                <div class="students-table-container">
+                    <table class="students-table" id="studentsTable">
+                        <thead>
+                            <tr>
+                                <th>اسم الطالب</th>
+                                <th>المرحلة</th>
+                                <th>ولي الأمر</th>
+                                <th>أيام الحضور</th>
+                                <th>أيام الغياب</th>
+                                <th>نسبة الحضور</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- سيتم ملء هذا الجدول ديناميكياً -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="attendance-section">
+            <div class="container">
+                <h2>إدارة الحضور والغياب للصف الثاني الاعدادي</h2>
+                
+                <!-- اختيار الشهر والمرحلة -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="monthSelect">الشهر:</label>
+                        <select id="monthSelect">
+                            <option value="1">يناير</option>
+                            <option value="2">فبراير</option>
+                            <option value="3">مارس</option>
+                            <option value="4">أبريل</option>
+                            <option value="5">مايو</option>
+                            <option value="6">يونيو</option>
+                            <option value="7">يوليو</option>
+                            <option value="8">أغسطس</option>
+                            <option value="9">سبتمبر</option>
+                            <option value="10">أكتوبر</option>
+                            <option value="11">نوفمبر</option>
+                            <option value="12">ديسمبر</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="gradeSelect">المرحلة:</label>
+                        <select id="gradeSelect">
+                            <option value="">جميع المراحل</option>
+                            <option value="prep1">الأول الإعدادي</option>
+                            <option value="prep2">الثاني الإعدادي</option>
+                            <option value="prep3">الثالث الإعدادي</option>
+                            <option value="sec1">الأول الثانوي</option>
+                            <option value="sec2">الثاني الثانوي</option>
+                            <option value="sec3">الثالث الثانوي</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline" onclick="loadStudents()">عرض الطلاب</button>
+                </div>
+
+                <!-- جدول الطلاب -->
+                <div class="students-table-container">
+                    <table class="students-table" id="studentsTable">
+                        <thead>
+                            <tr>
+                                <th>اسم الطالب</th>
+                                <th>المرحلة</th>
+                                <th>ولي الأمر</th>
+                                <th>أيام الحضور</th>
+                                <th>أيام الغياب</th>
+                                <th>نسبة الحضور</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- سيتم ملء هذا الجدول ديناميكياً -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="attendance-section">
+            <div class="container">
+                <h2>إدارة الحضور والغياب للصف الثالث الاعدادي</h2>
+                
+                <!-- اختيار الشهر والمرحلة -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="monthSelect">الشهر:</label>
+                        <select id="monthSelect">
+                            <option value="1">يناير</option>
+                            <option value="2">فبراير</option>
+                            <option value="3">مارس</option>
+                            <option value="4">أبريل</option>
+                            <option value="5">مايو</option>
+                            <option value="6">يونيو</option>
+                            <option value="7">يوليو</option>
+                            <option value="8">أغسطس</option>
+                            <option value="9">سبتمبر</option>
+                            <option value="10">أكتوبر</option>
+                            <option value="11">نوفمبر</option>
+                            <option value="12">ديسمبر</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="gradeSelect">المرحلة:</label>
+                        <select id="gradeSelect">
+                            <option value="">جميع المراحل</option>
+                            <option value="prep1">الأول الإعدادي</option>
+                            <option value="prep2">الثاني الإعدادي</option>
+                            <option value="prep3">الثالث الإعدادي</option>
+                            <option value="sec1">الأول الثانوي</option>
+                            <option value="sec2">الثاني الثانوي</option>
+                            <option value="sec3">الثالث الثانوي</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline" onclick="loadStudents()">عرض الطلاب</button>
+                </div>
+
+                <!-- جدول الطلاب -->
+                <div class="students-table-container">
+                    <table class="students-table" id="studentsTable">
+                        <thead>
+                            <tr>
+                                <th>اسم الطالب</th>
+                                <th>المرحلة</th>
+                                <th>ولي الأمر</th>
+                                <th>أيام الحضور</th>
+                                <th>أيام الغياب</th>
+                                <th>نسبة الحضور</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- سيتم ملء هذا الجدول ديناميكياً -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="attendance-section">
+            <div class="container">
+                <h2>إدارة الحضور والغياب للصف الاول الثانوي</h2>
+                
+                <!-- اختيار الشهر والمرحلة -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="monthSelect">الشهر:</label>
+                        <select id="monthSelect">
+                            <option value="1">يناير</option>
+                            <option value="2">فبراير</option>
+                            <option value="3">مارس</option>
+                            <option value="4">أبريل</option>
+                            <option value="5">مايو</option>
+                            <option value="6">يونيو</option>
+                            <option value="7">يوليو</option>
+                            <option value="8">أغسطس</option>
+                            <option value="9">سبتمبر</option>
+                            <option value="10">أكتوبر</option>
+                            <option value="11">نوفمبر</option>
+                            <option value="12">ديسمبر</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="gradeSelect">المرحلة:</label>
+                        <select id="gradeSelect">
+                            <option value="">جميع المراحل</option>
+                            <option value="prep1">الأول الإعدادي</option>
+                            <option value="prep2">الثاني الإعدادي</option>
+                            <option value="prep3">الثالث الإعدادي</option>
+                            <option value="sec1">الأول الثانوي</option>
+                            <option value="sec2">الثاني الثانوي</option>
+                            <option value="sec3">الثالث الثانوي</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline" onclick="loadStudents()">عرض الطلاب</button>
+                </div>
+
+                <!-- جدول الطلاب -->
+                <div class="students-table-container">
+                    <table class="students-table" id="studentsTable">
+                        <thead>
+                            <tr>
+                                <th>اسم الطالب</th>
+                                <th>المرحلة</th>
+                                <th>ولي الأمر</th>
+                                <th>أيام الحضور</th>
+                                <th>أيام الغياب</th>
+                                <th>نسبة الحضور</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- سيتم ملء هذا الجدول ديناميكياً -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="attendance-section">
+            <div class="container">
+                <h2>إدارة الحضور والغياب للصف الثاني الثانوي</h2>
+                
+                <!-- اختيار الشهر والمرحلة -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="monthSelect">الشهر:</label>
+                        <select id="monthSelect">
+                            <option value="1">يناير</option>
+                            <option value="2">فبراير</option>
+                            <option value="3">مارس</option>
+                            <option value="4">أبريل</option>
+                            <option value="5">مايو</option>
+                            <option value="6">يونيو</option>
+                            <option value="7">يوليو</option>
+                            <option value="8">أغسطس</option>
+                            <option value="9">سبتمبر</option>
+                            <option value="10">أكتوبر</option>
+                            <option value="11">نوفمبر</option>
+                            <option value="12">ديسمبر</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="gradeSelect">المرحلة:</label>
+                        <select id="gradeSelect">
+                            <option value="">جميع المراحل</option>
+                            <option value="prep1">الأول الإعدادي</option>
+                            <option value="prep2">الثاني الإعدادي</option>
+                            <option value="prep3">الثالث الإعدادي</option>
+                            <option value="sec1">الأول الثانوي</option>
+                            <option value="sec2">الثاني الثانوي</option>
+                            <option value="sec3">الثالث الثانوي</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline" onclick="loadStudents()">عرض الطلاب</button>
+                </div>
+
+                <!-- جدول الطلاب -->
+                <div class="students-table-container">
+                    <table class="students-table" id="studentsTable">
+                        <thead>
+                            <tr>
+                                <th>اسم الطالب</th>
+                                <th>المرحلة</th>
+                                <th>ولي الأمر</th>
+                                <th>أيام الحضور</th>
+                                <th>أيام الغياب</th>
+                                <th>نسبة الحضور</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- سيتم ملء هذا الجدول ديناميكياً -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="attendance-section">
+            <div class="container">
+                <h2>إدارة الحضور والغياب للصف الثالث الثانوي</h2>
+                
+                <!-- اختيار الشهر والمرحلة -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="monthSelect">الشهر:</label>
+                        <select id="monthSelect">
+                            <option value="1">يناير</option>
+                            <option value="2">فبراير</option>
+                            <option value="3">مارس</option>
+                            <option value="4">أبريل</option>
+                            <option value="5">مايو</option>
+                            <option value="6">يونيو</option>
+                            <option value="7">يوليو</option>
+                            <option value="8">أغسطس</option>
+                            <option value="9">سبتمبر</option>
+                            <option value="10">أكتوبر</option>
+                            <option value="11">نوفمبر</option>
+                            <option value="12">ديسمبر</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="gradeSelect">المرحلة:</label>
+                        <select id="gradeSelect">
+                            <option value="">جميع المراحل</option>
+                            <option value="prep1">الأول الإعدادي</option>
+                            <option value="prep2">الثاني الإعدادي</option>
+                            <option value="prep3">الثالث الإعدادي</option>
+                            <option value="sec1">الأول الثانوي</option>
+                            <option value="sec2">الثاني الثانوي</option>
+                            <option value="sec3">الثالث الثانوي</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline" onclick="loadStudents()">عرض الطلاب</button>
+                </div>
+
+                <!-- جدول الطلاب -->
+                <div class="students-table-container">
+                    <table class="students-table" id="studentsTable">
+                        <thead>
+                            <tr>
+                                <th>اسم الطالب</th>
+                                <th>المرحلة</th>
+                                <th>ولي الأمر</th>
+                                <th>أيام الحضور</th>
+                                <th>أيام الغياب</th>
+                                <th>نسبة الحضور</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- سيتم ملء هذا الجدول ديناميكياً -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم إضافة حضور/غياب -->
+        <section class="attendance-form-section">
+            <div class="container">
+                <h2>تسجيل الحضور والغياب</h2>
+                <form class="attendance-form" id="attendanceForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="attendanceStudent">اختر الطالب *</label>
+                            <select id="attendanceStudent" name="attendanceStudent" required>
+                                <option value="">اختر الطالب</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="attendanceDate">التاريخ *</label>
+                            <input type="date" id="attendanceDate" name="attendanceDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="attendanceStatus">الحالة *</label>
+                            <select id="attendanceStatus" name="attendanceStatus" required>
+                                <option value="">اختر الحالة</option>
+                                <option value="present">حاضر</option>
+                                <option value="absent">غائب</option>
+                                <option value="late">متأخر</option>
+                                <option value="excused">غائب بعذر</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="attendanceNotes">ملاحظات</label>
+                        <textarea id="attendanceNotes" name="attendanceNotes" rows="3" placeholder="أضف ملاحظات حول الحضور أو الغياب..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">تسجيل الحضور</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- قسم التقارير -->
+        <section class="reports-section">
+            <div class="container">
+                <h2>التقارير الشهرية</h2>
+                
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <h3>تقرير الحضور الشهري</h3>
+                        <p>عرض إحصائيات الحضور والغياب للشهر المحدد</p>
+                        <button class="btn btn-outline" onclick="generateMonthlyReport()">إنشاء التقرير</button>
+                    </div>
+                    
+                    <div class="report-card">
+                        <h3>تقرير الطلاب المتأخرين</h3>
+                        <p>قائمة الطلاب الذين تأخروا عن الحضور</p>
+                        <button class="btn btn-outline" onclick="generateLateReport()">إنشاء التقرير</button>
+                    </div>
+                    
+                    <div class="report-card">
+                        <h3>تقرير الغياب المتكرر</h3>
+                        <p>الطلاب الذين تغيبوا أكثر من 3 مرات</p>
+                        <button class="btn btn-outline" onclick="generateAbsentReport()">إنشاء التقرير</button>
+                    </div>
+                    
+                    <div class="report-card">
+                        <h3>تصدير البيانات</h3>
+                        <p>تصدير جميع البيانات إلى ملف Excel</p>
+                        <button class="btn btn-outline" onclick="exportToExcel()">تصدير Excel</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="reports-footer">
+        <div class="container">
+            <p>&copy; 2024 Mr Ammar Yasser. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="reports-script.js"></script>
+</body>
+</html> 

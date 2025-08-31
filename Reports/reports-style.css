@@ -1,0 +1,473 @@
+/* صفحة التقارير */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Cairo", sans-serif;
+    background: linear-gradient(180deg, rgba(7,15,43,1) 0%, rgba(27,26,85,1) 100%);
+    min-height: 100vh;
+    direction: rtl;
+    color: #fff;
+}
+
+.reports-page {
+    padding: 2rem 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header */
+/* Header responsive */
+Header {
+    background: #070F2B;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+Header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+Header h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    display: block;
+}
+
+.nav-list a:hover {
+    background: #1B1A55;
+}
+
+/* هامبرغر مينو للشاشات الصغيرة */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-toggle span {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+/* Responsive للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-list {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    
+    .nav-list.active {
+        display: flex;
+    }
+    
+    .nav-list li {
+        width: 100%;
+    }
+    
+    .nav-list a {
+        text-align: center;
+        padding: 0.75rem;
+        border: 1px solid #535C91;
+    }
+}
+
+@media (max-width: 480px) {
+    Header .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    Header h2 {
+        text-align: center;
+    }
+}
+
+/* الأقسام */
+.add-student-section,
+.attendance-section,
+.attendance-form-section,
+.reports-section {
+    background: rgba(12, 19, 67, 0.9);
+    margin: 2rem auto;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid #535C91;
+}
+
+.add-student-section h2,
+.attendance-section h2,
+.attendance-form-section h2,
+.reports-section h2 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/* النماذج */
+.student-form,
+.attendance-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 2px solid #535C91;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: rgba(27, 26, 85, 0.5);
+    color: #fff;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9290C3;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #9290C3;
+    box-shadow: 0 0 0 3px rgba(146, 144, 195, 0.1);
+    background: rgba(27, 26, 85, 0.7);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* الأزرار */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #1B1A55;
+    color: #fff;
+    border: 2px solid transparent;
+}
+
+.btn-primary:hover {
+    background: #232269;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(27, 26, 85, 0.4);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #535C91;
+    border: 2px solid #535C91;
+}
+
+.btn-outline:hover {
+    background: #535C91;
+    color: #fff;
+}
+
+/* الفلاتر */
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    color: #fff;
+    font-weight: 600;
+}
+
+.filter-group select {
+    padding: 0.5rem;
+    border: 2px solid #535C91;
+    border-radius: 8px;
+    background: rgba(27, 26, 85, 0.5);
+    color: #fff;
+    min-width: 150px;
+}
+
+/* جدول الطلاب */
+.students-table-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(27, 26, 85, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.students-table th,
+.students-table td {
+    padding: 1rem;
+    text-align: right;
+    border-bottom: 1px solid #535C91;
+}
+
+.students-table th {
+    background: #1B1A55;
+    color: #fff;
+    font-weight: 600;
+}
+
+.students-table td {
+    color: #dfe3ff;
+}
+
+.students-table tbody tr:hover {
+    background: rgba(146, 144, 195, 0.1);
+}
+
+/* بطاقات التقارير */
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.report-card {
+    background: rgba(27, 26, 85, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #535C91;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.report-card:hover {
+    transform: translateY(-5px);
+    background: rgba(27, 26, 85, 0.7);
+}
+
+.report-card h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.report-card p {
+    color: #dfe3ff;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Footer */
+.reports-footer {
+    background: #070F2B;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid #535C91;
+}
+
+/* حالات الحضور */
+.attendance-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-present {
+    background: rgba(81, 207, 102, 0.2);
+    color: #51cf66;
+    border: 1px solid #51cf66;
+}
+
+.status-absent {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+}
+
+.status-late {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    border: 1px solid #ffc107;
+}
+
+.status-excused {
+    background: rgba(108, 117, 125, 0.2);
+    color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+/* الإجراءات */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 0.25rem 0.75rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.edit-btn {
+    background: #535C91;
+    color: #fff;
+}
+
+.edit-btn:hover {
+    background: #9290C3;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-group select {
+        min-width: auto;
+    }
+    
+    .students-table {
+        font-size: 0.9rem;
+    }
+    
+    .students-table th,
+    .students-table td {
+        padding: 0.5rem;
+    }
+    
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .add-student-section,
+    .attendance-section,
+    .attendance-form-section,
+    .reports-section {
+        margin: 1rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+} 
