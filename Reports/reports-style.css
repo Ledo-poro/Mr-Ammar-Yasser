@@ -24,7 +24,6 @@ body {
 }
 
 /* Header */
-/* Header responsive */
 Header {
     background: #070F2B;
     padding: 1rem 0;
@@ -36,25 +35,20 @@ Header {
 
 Header .container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 Header h2 {
     color: #fff;
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
 }
 
 .nav-list {
     display: flex;
     list-style: none;
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .nav-list a {
@@ -64,72 +58,12 @@ Header h2 {
     transition: all 0.3s;
     padding: 0.5rem 1rem;
     border-radius: 10px;
-    display: block;
 }
 
 .nav-list a:hover {
     background: #1B1A55;
-}
-
-/* هامبرغر مينو للشاشات الصغيرة */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 2rem;
-    height: 2rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.menu-toggle span {
-    width: 2rem;
-    height: 0.25rem;
-    background: #fff;
+    padding: 0.5rem 1rem;
     border-radius: 10px;
-    transition: all 0.3s linear;
-}
-
-/* Responsive للشاشات الصغيرة */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
-    
-    .nav-list {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 1rem;
-    }
-    
-    .nav-list.active {
-        display: flex;
-    }
-    
-    .nav-list li {
-        width: 100%;
-    }
-    
-    .nav-list a {
-        text-align: center;
-        padding: 0.75rem;
-        border: 1px solid #535C91;
-    }
-}
-
-@media (max-width: 480px) {
-    Header .container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    Header h2 {
-        text-align: center;
-    }
 }
 
 /* الأقسام */
@@ -457,17 +391,3 @@ Header h2 {
     }
 }
 
-@media (max-width: 480px) {
-    .add-student-section,
-    .attendance-section,
-    .attendance-form-section,
-    .reports-section {
-        margin: 1rem;
-        padding: 1.5rem 1rem;
-    }
-    
-    .btn {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
-    }
-} 
